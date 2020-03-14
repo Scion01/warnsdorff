@@ -3,7 +3,17 @@ require_relative '../lib/warnsdorff.rb'
 
 class Test < Minitest::Test
 	def setup
-		@inst = Warnsdorff.new
-		assert_equal "Hello", @inst.say_hello()
+		@input_stream = StringIO.new("0 3")
+    	@output_stream = StringIO.new
+		@inst = Warnsdorff.new(@input_stream,@output_stream)
 	end
+	def check_visited_length
+		p @inst.visited	
+		assert_equal 100,@inst.visited.length()
+	end
+	# def initialize()
+	# 	puts "dsadsa"
+	# 	setup()
+	# 	check_visited_length()
+	# end
 end
